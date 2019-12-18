@@ -1,0 +1,26 @@
+{
+  "name": "webshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HannesDahl/webshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HannesDahl/webshop/issues"
+  },
+  "homepage": "https://github.com/HannesDahl/webshop#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "path": "^0.12.7",
+    "sqlite3": "^4.1.1"
+  }
+}
