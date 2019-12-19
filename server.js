@@ -11,16 +11,26 @@ app.use(formidable({
     multiples: true,
     keepExtensions: true
 }));
+
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-    res.redirect('/home');
-});
-
-app.get('/home', function (req, res) {
-    res.render('pages/index');
+    let products = [{
+        name: 'Logitech Gpro wireless',
+        price: 50,
+        image: 'logitechgprowireless.png',
+        description: 'Epic mouse'
+    }, {
+        name: 'asus rx580',
+        price: 200,
+        image: 'asusrx580_8gb.jpg',
+        description: 'Good graphics card'
+    }]
+    res.render('pages/index', {
+        products: products
+    });
 });
 
 app.listen(port, () => console.log(`Webshop open on port ${port}!`));
