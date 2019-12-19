@@ -11,24 +11,23 @@ app.use(formidable({
     multiples: true,
     keepExtensions: true
 }));
+
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-    var products = [{
-            name: 'Ryzen 3 2200G',
-            price: 110
-        },
-        {
-            name: 'Ryzen 5 2600X',
-            price: 160
-        },
-        {
-            name: 'Ryzen 7 2700X',
-            price: 220
-        }
-    ];
+    let products = [{
+        name: 'Logitech Gpro wireless',
+        price: 50,
+        image: 'logitechgprowireless.png',
+        description: 'Epic mouse'
+    }, {
+        name: 'asus rx580',
+        price: 200,
+        image: 'asusrx580_8gb.jpg',
+        description: 'Good graphics card'
+    }]
     res.render('pages/index', {
         products: products
     });
