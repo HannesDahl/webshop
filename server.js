@@ -11,11 +11,16 @@ app.use(formidable({
     multiples: true,
     keepExtensions: true
 }));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/public');
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-    res.json({
-        message: 'The server works!'
-    })
+    res.redirect('/home');
+})
+
+app.get('/home', function (req, res) {
+    res.render('pages/index');
 });
 
 app.listen(port, () => console.log(`Webshop open on port ${port}!`));
