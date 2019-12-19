@@ -17,19 +17,28 @@ app.set('views', __dirname + '/public');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-    let products = [{
-        name: 'Logitech Gpro wireless',
-        price: 50,
-        image: 'logitechgprowireless.png',
-        description: 'Epic mouse'
-    }, {
-        name: 'asus rx580',
-        price: 200,
-        image: 'asusrx580_8gb.jpg',
-        description: 'Good graphics card'
-    }]
-    res.render('pages/index', {
-        products: products
+    let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+        console.log('Connected to the products database.');
+    });
+
+    db.serialize(() => {
+        db.all(`SELECT * FROM products LIMIT 10`, (err, products) => {
+            if (err) {
+                console.error(err.message);
+            }
+            res.render('pages/index', {
+                products: products
+            })
+        });
+    });
+    db.close((err) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        console.log('Close the database connection.');
     });
 });
 
