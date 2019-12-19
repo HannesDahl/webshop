@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar'); -%>
+
+    <form class="container col s12 add-product" action="http://localhost:3000/addproduct" method="POST"
+        enctype="multipart/form-data">
+        <h1 class="center">Add product</h1>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="name" id="name" type="text" class="validate" required>
+                <label for="name">Product name</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="price" id="price" type="number" step="0.01" class="validate" required>
+                <label for="price">Price</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea name="description" id="description" class="materialize-textarea" required></textarea>
+                <label for="description">Description</label>
+            </div>
+        </div>
+
+        <div class="file-field input-field">
+            <div class="btn grey darken-3">
+                <span>Image</span>
+                <input name="image" type="file" required>
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+
+        <h4 class="mt2">Select category/categories</h4>
+        <div class="m5">
+            <% for(i = 0; i < categories.length; i++) { %>
+            <p>
+                <label>
+                    <input name="check" value="<%=i + 1%>" type="checkbox">
+                    <span><%=categories[i].name%></span>
+                </label>
+            </p>
+            <% } %>
+        </div>
+
+        <button class="btn grey darken-3">Add product</button>
+    </form>
+
+    <%- include('../partials/footer'); -%>
+
+    <%- include('../partials/scripts'); -%>
+
+</body>
+
+</html>
