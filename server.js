@@ -16,11 +16,22 @@ app.set('views', __dirname + '/public');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-    res.redirect('/home');
-});
-
-app.get('/home', function (req, res) {
-    res.render('pages/index');
+    var products = [{
+            name: 'Ryzen 3 2200G',
+            price: 110
+        },
+        {
+            name: 'Ryzen 5 2600X',
+            price: 160
+        },
+        {
+            name: 'Ryzen 7 2700X',
+            price: 220
+        }
+    ];
+    res.render('pages/index', {
+        products: products
+    });
 });
 
 app.listen(port, () => console.log(`Webshop open on port ${port}!`));
