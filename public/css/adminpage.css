@@ -8,40 +8,43 @@
     ADMIN PAGE
 **/
 
-ul.sidenav {
+ul.side-nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 250px;
     background-color: #333;
     position: fixed;
+    top: 0;
+    left: 0;
     height: 100%;
     overflow: auto;
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1;
 }
 
-ul.sidenav .header {
+ul.side-nav .header {
     padding: 25px;
-    font-size: 2.4rem;
+    font-size: 2.4rem !important;
     font-weight: 700;
     color: #fff;
     margin-bottom: 15px;
 }
 
-ul.sidenav li a {
+ul.side-nav li a {
     display: block;
     color: #fff;
     padding: 8px 16px;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
 }
 
-ul.sidenav li a.active {
+ul.side-nav li a.active {
     background-color: #555;
     color: white;
 }
 
-ul.sidenav li a:hover:not(.active) {
+ul.side-nav li a:hover:not(.active) {
     background-color: #393939;
     color: white;
 }
@@ -52,8 +55,17 @@ ul.sidenav li a:hover:not(.active) {
 
 div.container {
     width: calc(100% - 250px);
+    padding: 50px;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: auto;
+}
+
+.add-product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: calc(100% - 250px) !important;
+    margin-left: auto !important;
 }
 
 .products-table td {
