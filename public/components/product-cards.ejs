@@ -1,7 +1,9 @@
 <% for(let i = 0; i < products.length; i++) { %>
+<% let productName = products[i].name.replace(/ /g, "_")%>
+
 <div class="col s3">
     <div class="card">
-        <div class="clickable">
+        <a href="/p/<%=productName%>">
             <div class="card-image">
                 <img class="image" src="../images/<%=products[i].image%>">
             </div>
@@ -9,7 +11,8 @@
                 <span class="card-title"><%=products[i].name%></span>
                 <p class="card-desc"><%=products[i].description%></p>
             </div>
-        </div>
+
+        </a>
         <div class="card-action">
             <a class="btn grey darken-3 white-text" href="#">Add to cart</a>
             <p class="price"><%=products[i].price%>€</p>

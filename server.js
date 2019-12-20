@@ -147,7 +147,12 @@ app.post('/addproduct', function (req, res) {
     });
 });
 
-app.get('/getproducts', function (req, res) {
+app.get('/p/:product', function (req, res) {
+    let productUrl = req.params.product;
+    let productName = productUrl.replace(/_/g, " ")
+    console.log(productName);
+
+
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) {
             console.error(err.message);
@@ -156,16 +161,24 @@ app.get('/getproducts', function (req, res) {
     });
 
     db.serialize(() => {
-        db.all(`SELECT * FROM products`, (err, products) => {
-            if (err) console.error(err.message);
+        db.get(`SELECT * FROM products WHERE name = ?`, [productName], (err, product) => {
+            if (err) console.error(err.message)
 
-            res.json(products);
+            if (err) {
+                console.error(err.message);
+            }
+            res.render('pages/product-page', {
+                product: product
+            })
+            db.close((err) => {
+                if (err) {
+                    return console.error(err.message);
+                }
+                console.log('Closed the database connection.');
+            });
         });
     });
-    db.close((err) => {
-        if (err) console.error(err.message);
-        console.log('Close the database connection.');
-    });
 });
+
 
 app.listen(port, () => console.log(`Webshop open on port ${port}!`));
