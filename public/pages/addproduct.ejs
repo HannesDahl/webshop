@@ -49,7 +49,7 @@
             <% for(i = 0; i < categories.length; i++) { %>
             <p>
                 <label>
-                    <input name="check" value="<%=i + 1%>" type="checkbox">
+                    <input name="check" value="<%=categories[i].id%>" type="checkbox">
                     <span><%=categories[i].name%></span>
                 </label>
             </p>
