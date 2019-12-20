@@ -8,45 +8,48 @@
     ADMIN PAGE
 **/
 
-ul.side-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.side-nav {
     width: 250px;
-    background-color: #333;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    overflow: auto;
+    background-color: #333;
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1;
+    line-height: 1.2;
 }
 
-ul.side-nav .header {
-    padding: 25px;
-    font-size: 2.4rem !important;
-    font-weight: 700;
+.side-nav .side-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px;
     color: #fff;
-    margin-bottom: 15px;
 }
 
-ul.side-nav li a {
-    display: block;
+.side-nav .side-nav-header {
+    font-size: 2.4rem;
+}
+
+.side-nav-link.active {
+    border-left: 2px solid #add8e6;
+    background: #393939;
+}
+
+.side-nav-link.active i {
+    color: #add8e6;
+}
+
+.side-nav .side-nav-link i {
+    margin-right: 10px;
+}
+
+.side-nav .side-nav-link a {
     color: #fff;
-    padding: 8px 16px;
     text-decoration: none;
-    font-size: 1.2rem !important;
 }
 
-ul.side-nav li a.active {
-    background-color: #555;
-    color: white;
-}
-
-ul.side-nav li a:hover:not(.active) {
-    background-color: #393939;
-    color: white;
+.side-nav .side-nav-link:hover {
+    background: #393939;
 }
 
 .products-table {
@@ -91,7 +94,7 @@ div.container {
     position: absolute;
     top: 0;
     right: 0;
-    background: #333;
+    background: rgba(0, 0, 0, .5);
 }
 
 .loader-wrapper .loader {

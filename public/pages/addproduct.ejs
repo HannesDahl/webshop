@@ -9,14 +9,22 @@
 
 <body>
 
-    <ul class="side-nav">
-        <li><a class="header" href="/">Home</a></li>
-        <li><a href="/adminpage">Product list</a></li>
-        <li><a href="/adminpage/dashboard">Dashboard</a></li>
-        <li><a class="active" href="/adminpage/addproduct">Add product</a></li>
-    </ul>
+    <div class="side-nav">
+        <div class="side-nav-link side-nav-header">
+            <a href="/">Home</a>
+        </div>
+        <div class="side-nav-link">
+            <i class="material-icons">list</i><a href="/adminpage">Product list</a>
+        </div>
+        <div class="side-nav-link">
+            <i class="material-icons">dashboard</i><a href="/adminpage/dashboard">Dashboard</a>
+        </div>
+        <div class="side-nav-link active">
+            <i class="material-icons">add</i><a href="/adminpage/addproduct">Add product</a>
+        </div>
+    </div>
 
-    <div class="add-product">
+    <div id="add-product" class="add-product">
         <form class="container col s12" action="http://localhost:3000/addproduct" method="POST"
             enctype="multipart/form-data">
             <h1 class="center">Add product</h1>
@@ -73,12 +81,7 @@
     </div>
 
     <%- include('../partials/scripts'); -%>
-
-    <script>
-        $(window).on("load", function () {
-            $('.loader-wrapper').fadeOut("slow");
-        });
-    </script>
+    <script src="../js/admin.js"></script>
 
 </body>
 

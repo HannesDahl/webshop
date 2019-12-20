@@ -3,18 +3,27 @@
 
 <head>
     <%- include('../partials/head'); -%>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/adminpage.css">
     <title>Adminpage - add product</title>
 </head>
 
 <body>
 
-    <ul class="side-nav">
-        <li><a class="header" href="/">Home</a></li>
-        <li><a href="/adminpage">Product list</a></li>
-        <li><a class="active" href="/adminpage/dashboard">Dashboard</a></li>
-        <li><a href="/adminpage/addproduct">Add product</a></li>
-    </ul>
+    <div class="side-nav">
+        <div class="side-nav-link side-nav-header">
+            <a href="/">Home</a>
+        </div>
+        <div class="side-nav-link">
+            <i class="material-icons">list</i><a href="/adminpage">Product list</a>
+        </div>
+        <div class="side-nav-link active">
+            <i class="material-icons">dashboard</i><a href="/adminpage/dashboard">Dashboard</a>
+        </div>
+        <div class="side-nav-link">
+            <i class="material-icons">add</i><a href="/adminpage/addproduct">Add product</a>
+        </div>
+    </div>
 
     <div class="dashboard">
         <canvas class="dashboard-chart" id="dashboard-chart"></canvas>
@@ -26,12 +35,7 @@
 
     <%- include('../partials/scripts'); -%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="../js/dashboard.js"></script>
-    <script>
-        $(window).on("load", function () {
-            $('.loader-wrapper').fadeOut("slow");
-        });
-    </script>
+    <script src="../js/admin.js"></script>
 
 </body>
 
