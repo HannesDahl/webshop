@@ -15,11 +15,12 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 app.use(express.static(__dirname + '/public'));
 
+
+
 app.get('/', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
-        if (err) {
-            console.error(err.message);
-        }
+        if (err) console.error(err.message);
+
         console.log('Connected to the products database.');
     });
 
@@ -29,13 +30,35 @@ app.get('/', function (req, res) {
 
             res.render('pages/index', {
                 products: products
-            })
+            });
         });
     });
     db.close((err) => {
-        if (err) {
-            return console.error(err.message);
-        }
+        if (err) return console.error(err.message);
+
+        console.log('Close the database connection.');
+    });
+});
+
+app.get('/adminpage', function (req, res) {
+    let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
+        if (err) console.error(err.message);
+
+        console.log('Connected to the products database.');
+    });
+
+    db.serialize(() => {
+        db.all(`SELECT * FROM products`, (err, products) => {
+            if (err) console.error(err.message);
+
+            res.render('pages/adminpage', {
+                products: products
+            });
+        });
+    });
+    db.close((err) => {
+        if (err) return console.error(err.message);
+
         console.log('Close the database connection.');
     });
 });
