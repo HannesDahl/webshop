@@ -72,22 +72,32 @@ div.container {
     text-align: center;
 }
 
+.dashboard {
+    padding: 50px;
+}
+
+.dashboard-chart {
+    width: calc(100% - 250px) !important;
+    height: 100% !important;
+    margin-left: auto;
+}
+
 .loader-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 250px);
     height: 100%;
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     background: #333;
 }
 
 .loader-wrapper .loader {
-    border: 16px solid #f3f3f3;
+    border: 8px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #3498db;
+    border-top: 8px solid #3498db;
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite;

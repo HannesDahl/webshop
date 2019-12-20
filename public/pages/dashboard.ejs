@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" href="../css/adminpage.css">
+    <title>Adminpage - add product</title>
+</head>
+
+<body>
+
+    <ul class="side-nav">
+        <li><a class="header" href="/">Home</a></li>
+        <li><a href="/adminpage">Product list</a></li>
+        <li><a class="active" href="/adminpage/dashboard">Dashboard</a></li>
+        <li><a href="/adminpage/addproduct">Add product</a></li>
+    </ul>
+
+    <div class="dashboard">
+        <canvas class="dashboard-chart" id="dashboard-chart"></canvas>
+    </div>
+
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <%- include('../partials/scripts'); -%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        $(window).on("load", function () {
+            $('.loader-wrapper').fadeOut("slow");
+        });
+    </script>
+
+</body>
+
+</html>

@@ -121,6 +121,10 @@ app.get('/adminpage/addproduct', function (req, res) {
     });
 });
 
+app.get('/adminpage/dashboard', function (req, res) {
+    res.render('pages/dashboard');
+});
+
 app.post('/addproduct', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READWRITE, (err) => {
         if (err) console.error(err.message);
