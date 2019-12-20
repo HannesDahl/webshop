@@ -49,9 +49,14 @@ nav {
     }
 
     .nav-content {
+        // .active {
+        //     background: #333;
+        // }
+
         .tab {
-            a:focus {
-                background: #333;
+
+            a.selected {
+                background-color: #333;
             }
         }
     }

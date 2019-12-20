@@ -53,8 +53,8 @@ nav .cart:hover {
   color: #e1e1e1;
 }
 
-nav .nav-content .tab a:focus {
-  background: #333;
+nav .nav-content .tab a.selected {
+  background-color: #333;
 }
 
 .sidenav {

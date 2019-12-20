@@ -29,12 +29,12 @@
 </div>
 
 <ul class="sidenav" id="mobile-demo">
-    <li><a href="#">Computers</a></li>
-    <li><a href="#">Components</a></li>
-    <li><a href="#">Peripherals</a></li>
-    <li><a href="#">Phones</a></li>
-    <li><a href="#">Gaming</a></li>
-    <li><a href="#">Network</a></li>
+    <li><a href="/c/computers">computers</a></li>
+    <li><a href="/c/components">components</a></li>
+    <li><a href="/c/peripherals">peripherals</a></li>
+    <li><a href="/c/phones">phones</a></li>
+    <li><a href="/c/gaming">gaming</a></li>
+    <li><a href="/c/network">network</a></li>
     <form>
         <input placeholder="Search" class="search-bar" type="search">
     </form>
@@ -43,3 +43,14 @@
         <a class="btn grey darken-3" href="#">Sign up</a>
     </div>
 </ul>
+
+<script>
+    let tabs = document.getElementsByClassName('tab')
+    for (let i = 0; i < tabs.length; i++) {
+        if (window.location.pathname == tabs[i].firstChild.pathname) {
+            tabs[i].classList.add('active');
+        } else {
+            tabs[i].classList.remove('active');
+        }
+    }
+</script>
