@@ -145,7 +145,7 @@ app.post('/addproduct', function (req, res) {
     });
 });
 
-app.get('/:product', function (req, res) {
+app.get('/p/:product', function (req, res) {
     let productUrl = req.params.product;
     let productName = productUrl.replace(/_/g, " ")
     console.log(productName);
