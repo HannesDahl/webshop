@@ -145,4 +145,38 @@ app.post('/addproduct', function (req, res) {
     });
 });
 
+app.get('/:product', function (req, res) {
+    let productUrl = req.params.product;
+    let productName = productUrl.replace(/_/g, " ")
+    console.log(productName);
+
+
+    let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+        console.log('Connected to the products database.');
+    });
+
+    db.serialize(() => {
+        db.get(`SELECT * FROM products WHERE name = ?`, [productName], (err, product) => {
+            if (err) console.error(err.message)
+
+            if (err) {
+                console.error(err.message);
+            }
+            res.render('pages/product-page', {
+                product: product
+            })
+            db.close((err) => {
+                if (err) {
+                    return console.error(err.message);
+                }
+                console.log('Closed the database connection.');
+            });
+        });
+    });
+});
+
+
 app.listen(port, () => console.log(`Webshop open on port ${port}!`));
