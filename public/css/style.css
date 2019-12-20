@@ -53,8 +53,12 @@
   color: #e1e1e1;
 }
 
-.navbar-fixed .nav-content .tab a:focus {
+.navbar-fixed .nav-content .active {
   background: #333;
+}
+
+.navbar-fixed .nav-content .tab a:hover {
+  background-color: #333;
 }
 
 .sidenav {
