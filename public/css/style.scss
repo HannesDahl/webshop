@@ -1,29 +1,46 @@
 .navbar-fixed {
 
-    i {
-        width: 64px;
-        display: inline-block !important;
-    }
-
     #nav-mobile {
         display: flex;
         align-items: center;
-        margin-right: 80px;
+        margin-right: 40px;
+        height: 64px;
 
-        .search-bar {
-            background: #fff;
-            border: none;
-            padding: 0 10px;
-            width: 200px;
-            transition: .5s;
-            border-radius: 3px;
-            margin-top: 15px;
-            height: 36px;
+        input[type=search]:not(.browser-default) {
+            margin: 0;
+        }
 
-            &:focus {
+        .search-bar-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .search-bar {
+                background: #fff;
                 border: none;
-                box-shadow: none;
-                width: 260px;
+                padding: 0 10px;
+                width: 200px;
+                transition: .5s;
+                border-radius: 3px;
+                margin-top: 8px;
+                padding-right: 40px;
+                height: 36px;
+
+                &:focus {
+                    border: none;
+                    box-shadow: none;
+                    width: 260px;
+                }
+            }
+
+            .search-icon {
+                position: absolute;
+                right: 0;
+                padding: 0 10px;
+
+                &:hover {
+                    background: none;
+                }
             }
         }
 
