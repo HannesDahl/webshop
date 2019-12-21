@@ -10,20 +10,7 @@
 
 <body>
 
-    <div class="side-nav">
-        <div class="side-nav-link side-nav-header">
-            <a href="/">Home</a>
-        </div>
-        <div class="side-nav-link">
-            <i class="material-icons">list</i><a href="/adminpage">Product list</a>
-        </div>
-        <div class="side-nav-link active">
-            <i class="material-icons">dashboard</i><a href="/adminpage/dashboard">Dashboard</a>
-        </div>
-        <div class="side-nav-link">
-            <i class="material-icons">add</i><a href="/adminpage/addproduct">Add product</a>
-        </div>
-    </div>
+    <%- include('../partials/adminsidenav'); -%>
 
     <div class="dashboard">
         <canvas class="dashboard-chart" id="dashboard-chart"></canvas>

@@ -74,7 +74,7 @@ app.get('/', function (req, res) {
     });
 });
 
-app.get('/adminpage', function (req, res) {
+app.get('/adminpage/productlist', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) console.error(err.message);
 

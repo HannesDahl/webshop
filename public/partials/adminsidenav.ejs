@@ -1,0 +1,25 @@
+<div class="side-nav">
+    <div class="side-nav-header">
+        <a href="/">Home</a>
+    </div>
+    <div class="side-nav-link">
+        <i class="material-icons">list</i><a href="/adminpage/productlist">Product list</a>
+    </div>
+    <div class="side-nav-link">
+        <i class="material-icons">dashboard</i><a href="/adminpage/dashboard">Dashboard</a>
+    </div>
+    <div class="side-nav-link">
+        <i class="material-icons">add</i><a href="/adminpage/addproduct">Add product</a>
+    </div>
+</div>
+
+<script>
+    let sideNavLinks = document.getElementsByClassName('side-nav-link');
+    for (let i = 0; i < sideNavLinks.length; i++) {
+        if (window.location.pathname.includes('/' + sideNavLinks[i].childNodes[2].href.replace(/^.*[\\\/]/, ''))) {
+            sideNavLinks[i].classList.add('active');
+        } else {
+            sideNavLinks[i].classList.remove('active');
+        }
+    }
+</script>
