@@ -6,8 +6,8 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
 
                 <div class="search-bar-wrapper">
-                    <input placeholder="Search" minlength="3" class="search-bar" type="search">
-                    <a class="black-text search-icon" id="search"><i class="material-icons">search</i></a>
+                    <input placeholder="Search" class="search-bar" type="search">
+                    <button class="black-text search-icon" id="search"><i class="material-icons">search</i></button>
                 </div>
 
                 <a class="btn white black-text" href="#">Log in</a>
@@ -46,13 +46,22 @@
     </div>
 </ul>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
 <script>
-    let tabs = document.getElementsByClassName('tab')
-    for (let i = 0; i < tabs.length; i++) {
-        if (window.location.pathname == tabs[i].firstChild.pathname) {
-            tabs[i].classList.add('active');
-        } else {
-            tabs[i].classList.remove('active');
+    $("#search").click(function () {
+        if (document.getElementsByClassName('swiper-container')[0] && document.getElementsByClassName(
+                'shop-header')[0]) {
+            document.getElementsByClassName('swiper-container')[0].remove();
+            document.getElementsByClassName('shop-header')[0].remove();
         }
-    }
+
+        $.getJSON(`/s/${$('.search-bar').val()}`, function (products) {
+            let header = document.createElement('h4');
+            header.textContent = `Searched results for: ${$('.search-bar').val()}`;
+            let wrapper = document.getElementById('productsWrapper');
+            wrapper.innerHTML = '';
+            wrapper.appendChild(header);
+        });
+    });
 </script>

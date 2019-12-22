@@ -31,7 +31,7 @@ function loadDashboardChart() {
                 ],
                 borderWidth: 1,
                 pointBackgroundColor: "#4BC0C0"
-            }]
+            }],
         },
         options: {
             scales: {

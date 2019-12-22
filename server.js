@@ -49,6 +49,28 @@ app.get('/c/:category', function (req, res) {
     });
 });
 
+app.get('/s/:searchinput', function (req, res) {
+    let searchInput = req.params.searchinput;
+
+    let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
+        if (err) {
+            console.error(err.message);
+        }
+        console.log('Connected to the products database.');
+    });
+
+    db.serialize(() => {
+        db.all(`SELECT * FROM products WHERE name LIKE '%${searchInput}%'`, (err, rows) => {
+            if (err) {
+                console.error(err.message);
+            }
+            res.json(
+                rows
+            )
+        });
+    });
+});
+
 app.get('/', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) {
@@ -154,8 +176,6 @@ app.post('/addproduct', function (req, res) {
 app.get('/p/:product', function (req, res) {
     let productUrl = req.params.product;
     let productName = productUrl.replace(/_/g, " ")
-    console.log(productName);
-
 
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) {
