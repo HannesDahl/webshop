@@ -19,9 +19,7 @@ app.get('/c/:category', function (req, res) {
     let categoryName = req.params.category;
 
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
-        if (err) {
-            console.error(err.message);
-        }
+        if (err) console.error(err.message);
         console.log('Connected to the products database.');
     });
 
@@ -38,22 +36,41 @@ app.get('/c/:category', function (req, res) {
                 res.render('pages/index', {
                     products: products
                 })
-                db.close((err) => {
-                    if (err) {
-                        return console.error(err.message);
-                    }
-                    console.log('Closed the database connection.');
-                });
+            });
+            db.close((err) => {
+                if (err) console.error(err.message);
+                console.log('Closed the database connection.');
             });
         });
     });
 });
 
+app.get('/s/:searchinput', function (req, res) {
+    let searchInput = req.params.searchinput;
+
+    let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
+        if (err) console.error(err.message);
+        console.log('Connected to the products database.');
+    });
+
+    db.serialize(() => {
+        db.all(`SELECT * FROM products WHERE name LIKE '%${searchInput}%'`, (err, products) => {
+            if (err) console.error(err.message);
+            res.render('pages/search-results', {
+                products: products
+            });
+        });
+    });
+
+    db.close((err) => {
+        if (err) console.error(err.message);
+        console.log('Closed the database connection.');
+    });
+});
+
 app.get('/', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
-        if (err) {
-            console.error(err.message);
-        }
+        if (err) console.error(err.message);
         console.log('Connected to the products database.');
     });
 
@@ -67,9 +84,7 @@ app.get('/', function (req, res) {
         });
     });
     db.close((err) => {
-        if (err) {
-            return console.error(err.message);
-        }
+        if (err) console.error(err.message);
         console.log('Closed the database connection.');
     });
 });
@@ -77,7 +92,6 @@ app.get('/', function (req, res) {
 app.get('/adminpage/productlist', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) console.error(err.message);
-
         console.log('Connected to the products database.');
     });
 
@@ -92,7 +106,6 @@ app.get('/adminpage/productlist', function (req, res) {
     });
     db.close((err) => {
         if (err) return console.error(err.message);
-
         console.log('Closed the database connection.');
     });
 });
@@ -114,9 +127,7 @@ app.get('/adminpage/addproduct', function (req, res) {
     });
 
     db.close((err) => {
-        if (err) {
-            return console.error(err.message);
-        }
+        if (err) console.error(err.message);
         console.log('Closed the database connection.');
     });
 });
@@ -136,7 +147,6 @@ app.post('/addproduct', function (req, res) {
         db.run(`INSERT INTO products (name, price, description, image) VALUES(?, ?, ?, ?)`, productvals, function (err) {
             if (err) console.error(err);
 
-
             let categories = req.fields.selectedCategories.replace(/,/g, "")
             for (let i = 0; i < categories.length; i++) {
                 db.run(`INSERT INTO product_categories (product_id, category_id) VALUES(?, ?)`, this.lastID, categories[i], function (err) {
@@ -155,33 +165,25 @@ app.post('/addproduct', function (req, res) {
 app.get('/p/:product', function (req, res) {
     let productUrl = req.params.product;
     let productName = productUrl.replace(/_/g, " ")
-    console.log(productName);
-
 
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
-        if (err) {
-            console.error(err.message);
-        }
+        if (err) console.error(err.message);
         console.log('Connected to the products database.');
     });
 
     db.serialize(() => {
         db.get(`SELECT * FROM products WHERE name = ?`, [productName], (err, product) => {
-            if (err) console.error(err.message)
+            if (err) console.error(err.message);
 
-            if (err) {
-                console.error(err.message);
-            }
             res.render('pages/product-page', {
                 product: product
             })
-            db.close((err) => {
-                if (err) {
-                    return console.error(err.message);
-                }
-                console.log('Closed the database connection.');
-            });
         });
+    });
+
+    db.close((err) => {
+        if (err) return console.error(err.message);
+        console.log('Closed the database connection.');
     });
 });
 
