@@ -158,13 +158,14 @@ app.post('/addproduct', function (req, res) {
         db.run(`INSERT INTO products (name, price, description, image) VALUES(?, ?, ?, ?)`, productvals, function (err) {
             if (err) console.error(err);
 
-            console.log(`A row has been inserted with rowid ${this.lastID}`);
 
-            let categoriesvals = [this.lastID, req.fields.check];
-            db.run(`INSERT INTO product_categories (product_id, category_id) VALUES(?, ?)`, categoriesvals, function (err) {
-                if (err) console.error(err.message);
-                console.log(`A row has inserted with rowid ${this.lastID}`);
-            });
+            let categories = req.fields.selectedCategories.replace(/,/g, "")
+            for (let i = 0; i < categories.length; i++) {
+                db.run(`INSERT INTO product_categories (product_id, category_id) VALUES(?, ?)`, this.lastID, categories[i], function (err) {
+                    if (err) console.error(err.message);
+                    console.log(`A row has inserted with rowid ${this.lastID}`);
+                });
+            }
 
             res.json({
                 answer: `Product name: ${req.fields.name}, Price: ${req.fields.price}, Description: ${req.fields.description}, Thumbnail: ${req.files.image.path.replace(/^.*[\\\/]/, '', /["']/g, "")}`
