@@ -6,8 +6,8 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
 
                 <div class="search-bar-wrapper">
-                    <input placeholder="Search" class="search-bar" type="search">
-                    <button class="black-text search-icon" id="search"><i class="material-icons">search</i></button>
+                    <input placeholder="Search" id="search-bar-input" class="search-bar" type="search">
+                    <a href="/s/" class="black-text search-icon" id="search"><i class="material-icons">search</i></a>
                 </div>
 
                 <a class="btn white black-text" href="#">Log in</a>
@@ -47,21 +47,13 @@
 </ul>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-
 <script>
-    $("#search").click(function () {
-        if (document.getElementsByClassName('swiper-container')[0] && document.getElementsByClassName(
-                'shop-header')[0]) {
-            document.getElementsByClassName('swiper-container')[0].remove();
-            document.getElementsByClassName('shop-header')[0].remove();
-        }
+    $("#search").click(function (event) {
+        event.preventDefault();
 
-        $.getJSON(`/s/${$('.search-bar').val()}`, function (products) {
-            let header = document.createElement('h4');
-            header.textContent = `Searched results for: ${$('.search-bar').val()}`;
-            let wrapper = document.getElementById('productsWrapper');
-            wrapper.innerHTML = '';
-            wrapper.appendChild(header);
-        });
+        let searchValue = document.getElementById('search-bar-input').value;
+
+        $("#search").attr("href", `/s/${searchValue}`);
+        $("#search").click();
     });
 </script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar'); -%>
+
+    <div class="container products">
+        <h3>Search results for:</h3>
+        <div id="productsWrapper" class="row">
+            <%- include('../components/product-cards.ejs'); -%>
+        </div>
+    </div>
+
+    <%- include('../partials/footer'); -%>
+
+    <%- include('../partials/scripts'); -%>
+    <script src="../js/navbar.js"></script>
+
+</body>
+
+</html>
