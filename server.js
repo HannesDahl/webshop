@@ -37,11 +37,11 @@ app.get('/c/:category', function (req, res) {
                     products: products
                 })
             });
+            db.close((err) => {
+                if (err) console.error(err.message);
+                console.log('Closed the database connection.');
+            });
         });
-    });
-    db.close((err) => {
-        if (err) console.error(err.message);
-        console.log('Closed the database connection.');
     });
 });
 

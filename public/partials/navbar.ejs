@@ -4,10 +4,9 @@
             <a href="/" class="brand-logo">Name / Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-                <div class="search-bar-wrapper">
+                <div id="search-form" class="search-bar-wrapper">
                     <input placeholder="Search" id="search-bar-input" class="search-bar" type="search">
-                    <a href="/s/" class="black-text search-icon" id="search"><i class="material-icons">search</i></a>
+                    <a href="#" class="black-text search-icon" id="search"><i class="material-icons">search</i></a>
                 </div>
 
                 <a class="btn white black-text" href="#">Log in</a>
@@ -45,14 +44,3 @@
         <a class="btn grey darken-3" href="#">Sign up</a>
     </div>
 </ul>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-<script>
-    $("#search").click(function () {
-
-        let searchValue = document.getElementById('search-bar-input').value;
-
-        $("#search").attr("href", `/s/${searchValue}`);
-        $("#search").click();
-    });
-</script>
