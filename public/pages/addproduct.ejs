@@ -52,14 +52,15 @@
                 <% for(i = 0; i < categories.length; i++) { %>
                 <p>
                     <label>
-                        <input name="check" value="<%=categories[i].id%>" type="checkbox">
+                        <input class="checkbox" name="check" value="<%=categories[i].id%>" type="checkbox">
                         <span><%=categories[i].name%></span>
                     </label>
                 </p>
                 <% } %>
             </div>
+            <input type="text" name="selectedCategories" id="selectedCategories" value="" hidden>
 
-            <button class="btn grey darken-3">Add product</button>
+            <button id="submit" class="btn grey darken-3">Add product</button>
         </form>
     </div>
 
@@ -69,7 +70,21 @@
 
     <%- include('../partials/scripts'); -%>
     <script src="../js/admin.js"></script>
+    <script>
+        let checkbox = document.getElementsByClassName('checkbox');
+        let selectedCategoriesHTML = document.getElementById('selectedCategories');
+        let submitBtn = document.getElementById('submit');
+        let selectedCategories = [];
 
+        submitBtn.addEventListener('click', function () {
+            for (let i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].checked) {
+                    selectedCategories.push(checkbox[i].value)
+                }
+            }
+            selectedCategoriesHTML.value = selectedCategories
+        })
+    </script>
 </body>
 
 </html>
