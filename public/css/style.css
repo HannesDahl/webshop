@@ -142,6 +142,7 @@
 .container.products .card .card-content {
   padding: 10px;
   color: black;
+  height: 132px;
 }
 
 .container.products .card .card-content .card-title {
