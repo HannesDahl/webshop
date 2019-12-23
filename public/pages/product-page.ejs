@@ -9,14 +9,19 @@
 
     <%- include('../partials/navbar'); -%>
 
-    <div class="product-page container">
-        <div class="col s5">
-            <img src="../images/<%=product.image%>">
-        </div>
-        <div class="col s7">
-            <h4><%=product.name%></h4>
-            <p><%=product.description%></p>
-            <p><%=product.price%></p>
+    <div class="container">
+        <div class="row">
+            <div class="product-page">
+                <div class="col s5">
+                    <img src="../images/<%=product.image%>">
+                </div>
+                <div class="col s7">
+                    <h4><%=product.name%></h4>
+                    <p><%=product.description%></p>
+                    <p class="page-price"><%=product.price%>€</p>
+                    <a href="#" class="btn grey darken-3">Add to cart</a>
+                </div>
+            </div>
         </div>
     </div>
 
