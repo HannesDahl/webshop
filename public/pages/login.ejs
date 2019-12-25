@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+</head>
+
+<body class="grey darken-4">
+
+    <div class="auth container">
+        <div class="container mb5 auth-wrapper">
+            <h1 class="center pt1">Log in</h1>
+            <div class="row mt5 container">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="username" name="username" type="text" class="validate" required>
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate" required>
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in">
+                            <span>Remember me</span>
+                        </label>
+                    </p>
+                    <button class="btn grey darken-3" style="width: 100%;">Log in</button>
+                    <p>Don't have an account yet? <a href="/signup">register here</a>.</p>
+                    <a href="/" class="btn grey darken-3 mb5">back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/scripts'); -%>
+
+</body>
+
+</html>

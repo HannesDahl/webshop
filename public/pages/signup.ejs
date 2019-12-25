@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+</head>
+
+<body class="grey darken-4">
+
+    <div class="auth container">
+        <div class="container mb5 auth-wrapper">
+            <h1 class="center pt1">Sign up</h1>
+            <div class="row mt5 container">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" name="email" type="text" class="validate" required>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="username" name="username" type="text" class="validate" required>
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" minlength="6" name="password" type="password" class="validate"
+                                required>
+                            <label for="password">Password (6 or more)</label>
+                        </div>
+                    </div>
+                    <p>
+                        <label>
+                            <input type="checkbox" required>
+                            <span>Sign up for our news letter</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" required>
+                            <span>By clicking sign up, you agree to our <a href="#">User Agreement,</a> <a
+                                    href="#">Privacy
+                                    Policy</a></span>
+                        </label>
+                    </p>
+                    <button class="btn grey darken-3" style="width: 100%;">Sign up</button>
+                    <p>Already have an account? <a href="/login">log in here</a>.</p>
+                    <a href="/" class="btn grey darken-3 mb5">back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/scripts'); -%>
+
+</body>
+
+</html>
