@@ -1,5 +1,11 @@
-.navbar-fixed {
+footer {
+    .page-footer {
+        bottom: 0;
+        position: absolute;
+    }
+}
 
+.navbar-fixed {
     #nav-mobile {
         display: flex;
         align-items: center;

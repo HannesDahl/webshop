@@ -17,7 +17,6 @@ $("#search").click(function (event) {
     } else {
         $("#search").attr("href", `/s/${searchValue}`);
     }
-
 });
 
 if (document.getElementById('productsWrapper')) {

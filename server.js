@@ -29,10 +29,24 @@ app.get('/c/:category', function (req, res) {
 
             let categoryId = row.id;
 
+            console.log(req.fields.order);
+
+
             db.all(`SELECT * FROM products AS a, product_categories AS b WHERE b.category_id = ? AND a.id = b.product_id`, [categoryId], (err, products) => {
                 if (err) {
                     console.error(err.message);
                 }
+                if (req.originalUrl.includes('?ob=priceAsc')) {
+                    products = products.sort(function (a, b) {
+                        return a.price - b.price
+                    });
+                }
+                if (req.originalUrl.includes('?ob=priceDesc')) {
+                    products = products.sort(function (a, b) {
+                        return b.price - a.price
+                    });
+                }
+
                 res.render('pages/index', {
                     products: products
                 })

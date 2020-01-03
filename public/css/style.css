@@ -1,3 +1,8 @@
+footer .page-footer {
+  bottom: 0;
+  position: absolute;
+}
+
 .navbar-fixed #nav-mobile {
   display: -webkit-box;
   display: -ms-flexbox;
