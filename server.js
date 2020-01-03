@@ -47,7 +47,7 @@ app.get('/c/:category', function (req, res) {
                     });
                 }
 
-                res.render('pages/index', {
+                res.render('pages/category-page', {
                     products: products
                 })
             });
