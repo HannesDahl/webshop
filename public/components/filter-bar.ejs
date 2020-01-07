@@ -21,7 +21,7 @@
 
     for (let i = 0; i < orderOptions.length; i++) {
         if (window.location.search === orderOptions[i].value) {
-
+            orderHTML.value = orderOptions[i].value
         }
     }
 
@@ -32,7 +32,7 @@
     let cardNames = document.getElementsByClassName('card-title');
     let filter;
     let textValue;
-    searchBar.addEventListener('keyup', function () {
+    searchBar.addEventListener('input', function () {
         filter = searchBar.value.toUpperCase();
         for (let i = 0; i < products.length; i++) {
             textValue = cardNames[i].textContent
