@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); -%>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar'); -%>
+
+    <div class="container cart py5">
+        <div class="my5">
+            <table class="responsive-table cart-table">
+                <thead>
+                    <tr>
+                        <th class="product-remove">&nbsp;</th>
+                        <th class="product-thumbnail">&nbsp;</th>
+                        <th class="product-name">Name</th>
+                        <th class="product-price">Price</th>
+                        <th class="product-quantity">Quantity</th>
+                        <th class="product-subtotal">Subtotal</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <%- include('../components/cart-row') -%>
+                </tbody>
+            </table>
+            <div class="row mt5">
+                <div class="col s5">
+                    <div class="input-field col s6">
+                        <input id="coupon-code" type="text" class="validate">
+                        <label class="active" for="coupon-code">Coupon code</label>
+                    </div>
+                    <a href="#" class="btn mt3 grey darken-3">apply coupon</a>
+                </div>
+                <div class="col s4 right">
+                    <div class="total-cost">
+                        <h4>Cart Totals</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <td>100€</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Moms (24%)</th>
+                                    <td>19,35€</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <td>100€</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="/checkout" class="btn grey darken-3 mt3">Proceed to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer'); -%>
+
+    <script src="../js/cart.js"></script>
+    <%- include('../partials/scripts'); -%>
+
+</body>
+
+</html>

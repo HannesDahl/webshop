@@ -108,6 +108,67 @@
   text-decoration: none;
 }
 
+.container.cart .cart-table thead .product-remove {
+  width: 10px;
+}
+
+.container.cart .cart-table thead .product-thumbnail {
+  width: 100px;
+}
+
+.container.cart .cart-table thead .product-price,
+.container.cart .cart-table thead .product-quantity,
+.container.cart .cart-table thead .product-subtotal {
+  width: 100px;
+}
+
+.container.cart .cart-table tbody td {
+  padding: 20px 5px;
+  overflow: hidden;
+  height: 80px;
+}
+
+.container.cart .cart-table tbody img {
+  max-height: 60px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 80px;
+}
+
+.container.cart .cart-table tbody .product-name {
+  font-size: 1.4rem;
+}
+
+.container.cart .cart-table tbody .product-name a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #333;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.container.cart .cart-table tbody .product-name a:hover {
+  color: #666;
+}
+
+.container.cart .cart-table tbody input[type=number] {
+  width: 40px;
+}
+
+.container.cart .cart-table .total-cost tr,
+.container.cart .cart-table .total-cost th,
+.container.cart .cart-table .total-cost thead,
+.container.cart .cart-table .total-cost table,
+.container.cart .cart-table .total-cost tbody {
+  display: block !important;
+  float: left !important;
+  text-align: right !important;
+}
+
 .swiper-container {
   width: 100%;
   margin-bottom: 50px;
