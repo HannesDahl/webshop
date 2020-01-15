@@ -1,4 +1,4 @@
-<% for(let i = 0; i < 2; i++) { %>
+<% for(let i = 0; i < 4; i++) { %>
 <tr>
     <td>
         <i class="material-icons">close</i>
@@ -15,6 +15,6 @@
     <td>
         <input type="number" min="0" max="99" value="1">
     </td>
-    <td><%=products[i].price%>€</td>
+    <td class="cart-product-price"><%=products[i].price%>€</td>
 </tr>
 <% } %>

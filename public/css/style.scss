@@ -153,19 +153,6 @@
                 width: 40px;
             }
         }
-
-        .total-cost {
-
-            tr,
-            th,
-            thead,
-            table,
-            tbody {
-                display: block !important;
-                float: left !important;
-                text-align: right !important;
-            }
-        }
     }
 }
 
@@ -209,6 +196,11 @@
             .card-desc {
                 font-size: .9rem;
             }
+
+            .card-id {
+                font-size: .8rem;
+                color: #666;
+            }
         }
 
         .card-action {
@@ -247,6 +239,11 @@
     }
 
     .col.s7 {
+        .product-id {
+            font-size: .8rem;
+            color: #666;
+        }
+
         .page-price {
             font-size: 2rem;
             font-weight: 700;

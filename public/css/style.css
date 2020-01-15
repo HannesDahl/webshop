@@ -159,16 +159,6 @@
   width: 40px;
 }
 
-.container.cart .cart-table .total-cost tr,
-.container.cart .cart-table .total-cost th,
-.container.cart .cart-table .total-cost thead,
-.container.cart .cart-table .total-cost table,
-.container.cart .cart-table .total-cost tbody {
-  display: block !important;
-  float: left !important;
-  text-align: right !important;
-}
-
 .swiper-container {
   width: 100%;
   margin-bottom: 50px;
@@ -215,6 +205,11 @@
 
 .container.products .card .card-content .card-desc {
   font-size: .9rem;
+}
+
+.container.products .card .card-content .card-id {
+  font-size: .8rem;
+  color: #666;
 }
 
 .container.products .card .card-action {
@@ -266,6 +261,11 @@
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.product-page .col.s7 .product-id {
+  font-size: .8rem;
+  color: #666;
 }
 
 .product-page .col.s7 .page-price {

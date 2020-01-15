@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="cart-products">
                     <%- include('../components/cart-row') -%>
                 </tbody>
             </table>
@@ -42,17 +42,17 @@
                             <thead>
                                 <tr>
                                     <th>Subtotal</th>
-                                    <td>100€</td>
+                                    <td id="cart-subtotal"></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th>Moms (24%)</th>
-                                    <td>19,35€</td>
+                                    <td id="cart-moms"></td>
                                 </tr>
                                 <tr>
                                     <th>Total</th>
-                                    <td>100€</td>
+                                    <td id="cart-total"></td>
 
                                 </tr>
                             </tbody>
