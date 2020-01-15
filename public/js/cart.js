@@ -17,5 +17,5 @@ for (let i = 0; i < cartArray.length; i++) {
     cartSubtotal.textContent = total + '€'
 }
 
-cartMoms.textContent = total * .24;
+cartMoms.textContent = Math.round(total * .24) + '€';
 cartTotal.textContent = total + '€';
