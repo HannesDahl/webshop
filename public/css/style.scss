@@ -129,6 +129,44 @@ footer {
         z-index: 5 !important;
     }
 
+    .noUi-connect {
+        background: #424242;
+    }
+
+    .noUi-handle {
+        width: 20px;
+
+        &::before {
+            left: 6px;
+        }
+
+        &::after {
+            left: 11px;
+        }
+    }
+
+    .price-range-filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .priceInput {
+        width: 55px;
+        height: 30px;
+        margin: 0 5px;
+    }
+
+    #setprice {
+        text-decoration: none;
+        margin-left: 10px;
+        color: white;
+        background-color: #424242;
+        padding: 0 6px;
+        border-radius: 2px;
+    }
+
     .card {
 
         .card-image {
@@ -223,10 +261,6 @@ footer {
 @media(max-width:1200px) {
 
     .products {
-        .noUi-connect {
-            background: #424242;
-        }
-
         .card .card-image img {
             object-fit: contain;
             max-height: 160px;

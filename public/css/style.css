@@ -134,6 +134,50 @@ footer .page-footer {
   z-index: 5 !important;
 }
 
+.container.products .noUi-connect {
+  background: #424242;
+}
+
+.container.products .noUi-handle {
+  width: 20px;
+}
+
+.container.products .noUi-handle::before {
+  left: 6px;
+}
+
+.container.products .noUi-handle::after {
+  left: 11px;
+}
+
+.container.products .price-range-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5px;
+}
+
+.container.products .priceInput {
+  width: 55px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+.container.products #setprice {
+  text-decoration: none;
+  margin-left: 10px;
+  color: white;
+  background-color: #424242;
+  padding: 0 6px;
+  border-radius: 2px;
+}
+
 .container.products .card .card-image {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -255,9 +299,6 @@ footer .page-footer {
 }
 
 @media (max-width: 1200px) {
-  .products .noUi-connect {
-    background: #424242;
-  }
   .products .card .card-image img {
     -o-object-fit: contain;
        object-fit: contain;

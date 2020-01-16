@@ -6,7 +6,6 @@ for (let i = 0; i < pricesHTML.length; i++) {
 let wrapper = $('#productWrapper');
 let productContainers = document.getElementsByClassName('card-container');
 let products = wrapper.children('.card-container')
-console.log(products)
 let pricesClone = prices.slice(0);
 let newOrder = [];
 
@@ -14,8 +13,6 @@ let newOrder = [];
 let orderHTML = document.getElementById('order');
 let orderOptions = document.getElementsByClassName('orderOption');
 orderHTML.addEventListener('change', changeOrder)
-
-//orderHTML.options[orderHTML.selectedIndex].value
 
 function changeOrder() {
     if (orderHTML.options[orderHTML.selectedIndex].value == '?ob=priceAsc') {
@@ -44,8 +41,6 @@ function changeOrder() {
     }
 }
 
-
-//orderHTML.options[orderHTML.selectedIndex].value
 for (let i = 0; i < orderOptions.length; i++) {
     if (window.location.search === orderOptions[i].value) {
         orderHTML.value = orderOptions[i].value
@@ -62,10 +57,20 @@ searchBar.addEventListener('input', updateProducts)
 
 // price range
 
-let minPrice = Math.min.apply(null, prices);
-let maxPrice = Math.max.apply(null, prices);
+let minPrice = Math.floor(Math.min.apply(null, prices));
+let maxPrice = Math.ceil(Math.max.apply(null, prices));
+let currentSliderValues;
+let minInput = document.getElementById('minInput');
+let maxInput = document.getElementById('maxInput');
+let setprice = document.getElementById('setprice');
+maxInput.setAttribute('min', minPrice)
+maxInput.setAttribute('max', maxPrice)
+minInput.setAttribute('min', minPrice)
+minInput.setAttribute('max', maxPrice)
+minInput.value = minPrice
+maxInput.value = maxPrice
 
-var slider = document.getElementById('test-slider');
+var slider = document.getElementById('price-slider');
 noUiSlider.create(slider, {
     start: [minPrice, maxPrice],
     connect: true,
@@ -76,15 +81,33 @@ noUiSlider.create(slider, {
         'min': minPrice,
         'max': maxPrice
     },
+    margin: 10,
     format: wNumb({
         decimals: 0
     })
 });
 
-slider.noUiSlider.on('update', updateProducts)
+slider.noUiSlider.on('update', updatePriceRange)
+
+function updatePriceRange() {
+    currentSliderValues = slider.noUiSlider.get();
+    minInput.value = currentSliderValues[0]
+    maxInput.value = currentSliderValues[1]
+    updateProducts()
+}
+
+setprice.addEventListener('click', changePriceRange)
+
+function changePriceRange() {
+    if (parseInt(minInput.value, 10) > parseInt(maxInput.value, 10)) {
+        alert('please stop')
+    } else {
+        slider.noUiSlider.set([minInput.value, maxInput.value]);
+    }
+}
 
 function updateProducts() {
-    let currentSliderValues = slider.noUiSlider.get();
+    currentSliderValues = slider.noUiSlider.get();
     filter = searchBar.value.toUpperCase();
 
     for (let i = 0; i < products.length; i++) {
