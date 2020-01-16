@@ -1,46 +1,16 @@
-<div class="input-field col s4">
+<div class="input-field col s3">
     <input id="category-search" type="text" autocomplete="off">
     <label for="category-search">Search</label>
 </div>
 
-<div class="input-field col s3 offset-s5">
+<div class="col s4 offset-s1 mt5">
+    <div id="test-slider"></div>
+</div>
+
+<div class="input-field col s3 offset-s1">
     <select id="order" name="order">
         <option value="" disabled selected>Order by</option>
         <option id="lowHigh" class="orderOption" name="lowHigh" value="?ob=priceAsc">price: low-high</option>
         <option class="orderOption" value="?ob=priceDesc">price: high-low</option>
     </select>
 </div>
-
-<script>
-    // order by
-    let orderHTML = document.getElementById('order');
-    let orderOptions = document.getElementsByClassName('orderOption');
-    orderHTML.addEventListener('change', function () {
-        window.location = orderHTML.options[orderHTML.selectedIndex].value
-    });
-
-    for (let i = 0; i < orderOptions.length; i++) {
-        if (window.location.search === orderOptions[i].value) {
-            orderHTML.value = orderOptions[i].value
-        }
-    }
-
-    // search
-    let searchBar = document.getElementById('category-search');
-    let products = document.getElementsByClassName('card');
-    let productContainers = document.getElementsByClassName('card-container');
-    let cardNames = document.getElementsByClassName('card-title');
-    let filter;
-    let textValue;
-    searchBar.addEventListener('input', function () {
-        filter = searchBar.value.toUpperCase();
-        for (let i = 0; i < products.length; i++) {
-            textValue = cardNames[i].textContent
-            if (textValue.toUpperCase().indexOf(filter) > -1) {
-                productContainers[i].style.display = "";
-            } else {
-                productContainers[i].style.display = "none";
-            }
-        }
-    })
-</script>

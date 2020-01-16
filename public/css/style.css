@@ -3,6 +3,10 @@ footer .page-footer {
   position: absolute;
 }
 
+.navbar-fixed .nav-extended {
+  z-index: 9999;
+}
+
 .navbar-fixed #nav-mobile {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -126,6 +130,10 @@ footer .page-footer {
   margin: 75px auto;
 }
 
+.container.products .dropdown-content {
+  z-index: 5 !important;
+}
+
 .container.products .card .card-image {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -247,6 +255,9 @@ footer .page-footer {
 }
 
 @media (max-width: 1200px) {
+  .products .noUi-connect {
+    background: #424242;
+  }
   .products .card .card-image img {
     -o-object-fit: contain;
        object-fit: contain;

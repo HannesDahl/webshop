@@ -6,6 +6,10 @@ footer {
 }
 
 .navbar-fixed {
+    .nav-extended {
+        z-index: 9999;
+    }
+
     #nav-mobile {
         display: flex;
         align-items: center;
@@ -121,6 +125,10 @@ footer {
 .container.products {
     margin: 75px auto;
 
+    .dropdown-content {
+        z-index: 5 !important;
+    }
+
     .card {
 
         .card-image {
@@ -215,6 +223,9 @@ footer {
 @media(max-width:1200px) {
 
     .products {
+        .noUi-connect {
+            background: #424242;
+        }
 
         .card .card-image img {
             object-fit: contain;

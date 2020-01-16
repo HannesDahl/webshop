@@ -33,20 +33,6 @@ app.get('/c/:category', function (req, res) {
                 if (err) {
                     console.error(err.message);
                 }
-
-                let currentOrder = req.query.ob
-
-                if (currentOrder == 'priceAsc') {
-                    products = products.sort(function (a, b) {
-                        return a.price - b.price
-                    });
-                }
-                if (currentOrder == 'priceDesc') {
-                    products = products.sort(function (a, b) {
-                        return b.price - a.price
-                    });
-                }
-
                 res.render('pages/category-page', {
                     products: products
                 })
