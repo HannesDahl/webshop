@@ -5,7 +5,6 @@
 
 <div class="col s5 mt5">
 
-
     <div id="price-slider"></div>
     <div class="price-range-filter"><input type="number" class="priceInput" id="minInput">€ - <input type="number"
             class="priceInput" id="maxInput">€ <a href="#" id="setprice">Set price range</a>
@@ -14,8 +13,16 @@
 
 <div class="input-field col s3 offset-s1">
     <select id="order" name="order">
-        <option value="" disabled selected>Order by</option>
-        <option id="lowHigh" class="orderOption" name="lowHigh" value="?ob=priceAsc">price: low-high</option>
-        <option class="orderOption" value="?ob=priceDesc">price: high-low</option>
+        <option value="alphabeticalAsc" selected>A-Z</option>
+        <option value="alphabeticalDesc">Z-A</option>
+        <option id="lowHigh" class="orderOption" name="lowHigh" value="priceAsc">price: low-high</option>
+        <option class="orderOption" value="priceDesc">price: high-low</option>
     </select>
 </div>
+<% products = products.sort(function (a, b) {
+    var x = a.name.toLowerCase();
+  var y = b.name.toLowerCase();
+  if (x < y) {return -1;}
+  if (x > y) {return 1;}
+  return 0;
+}) %>

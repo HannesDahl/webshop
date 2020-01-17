@@ -9,13 +9,28 @@ let products = wrapper.children('.card-container')
 let pricesClone = prices.slice(0);
 let newOrder = [];
 
+let cardNames = document.getElementsByClassName('card-title');
+let names = [];
+for (let i = 0; i < cardNames.length; i++) {
+    names.push(cardNames[i].innerText)
+}
+let namesClone = names.slice(0);
+
 // order by
+$(document).ready(function () {
+    $('select').formSelect({
+        dropdownOptions: {
+            coverTrigger: false
+        }
+    });
+});
 let orderHTML = document.getElementById('order');
 let orderOptions = document.getElementsByClassName('orderOption');
 orderHTML.addEventListener('change', changeOrder)
 
 function changeOrder() {
-    if (orderHTML.options[orderHTML.selectedIndex].value == '?ob=priceAsc') {
+    let currentOrder = orderHTML.options[orderHTML.selectedIndex].value
+    if (currentOrder == 'priceAsc') {
         prices = prices.sort(function (a, b) {
             return a - b
         });
@@ -27,12 +42,36 @@ function changeOrder() {
         }));
         newOrder = [];
     }
-    if (orderHTML.options[orderHTML.selectedIndex].value == '?ob=priceDesc') {
+    if (currentOrder == 'priceDesc') {
         prices = prices.sort(function (a, b) {
             return b - a
         });
         for (let i = 0; i < prices.length; i++) {
             newOrder.push(pricesClone.indexOf(prices[i]))
+        }
+        wrapper.append($.map(newOrder, function (v) {
+            return products[v]
+        }));
+        newOrder = [];
+    }
+    if (currentOrder == 'alphabeticalAsc') {
+        names.sort()
+        console.log(names);
+
+        for (let i = 0; i < names.length; i++) {
+            newOrder.push(namesClone.indexOf(names[i]))
+        }
+        wrapper.append($.map(newOrder, function (v) {
+            return products[v]
+        }));
+        newOrder = [];
+    }
+    if (currentOrder == 'alphabeticalDesc') {
+        names.sort()
+        console.log(names);
+
+        for (let i = 0; i < names.length; i++) {
+            newOrder.push(namesClone.indexOf(names[i]))
         }
         wrapper.append($.map(newOrder, function (v) {
             return products[v]
@@ -49,7 +88,6 @@ for (let i = 0; i < orderOptions.length; i++) {
 
 // search
 let searchBar = document.getElementById('category-search');
-let cardNames = document.getElementsByClassName('card-title');
 let filter;
 let textValue;
 searchBar.addEventListener('input', updateProducts)
