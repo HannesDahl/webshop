@@ -100,7 +100,9 @@ setprice.addEventListener('click', changePriceRange)
 
 function changePriceRange() {
     if (parseInt(minInput.value, 10) > parseInt(maxInput.value, 10)) {
-        alert('please stop')
+        M.toast({
+            html: 'Minimum price can\'t be higher than maximum'
+        })
     } else {
         slider.noUiSlider.set([minInput.value, maxInput.value]);
     }
