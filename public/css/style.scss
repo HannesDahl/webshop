@@ -126,6 +126,15 @@
                 padding: 20px 5px;
                 overflow: hidden;
                 height: 80px;
+
+                .item-remove-button {
+                    cursor: pointer;
+                    transition: .3s;
+
+                    &:hover {
+                        color: #666;
+                    }
+                }
             }
 
             img {
@@ -244,7 +253,7 @@
             color: #666;
         }
 
-        .page-price {
+        .price {
             font-size: 2rem;
             font-weight: 700;
         }

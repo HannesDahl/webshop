@@ -24,7 +24,9 @@
                 </thead>
 
                 <tbody id="cart-products">
+                    <% if(typeof products !== 'undefined') { %>
                     <%- include('../components/cart-row') -%>
+                    <% } %>
                 </tbody>
             </table>
             <div class="row mt5">
