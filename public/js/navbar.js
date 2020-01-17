@@ -7,15 +7,33 @@ for (let i = 0; i < tabs.length; i++) {
     }
 }
 
+let searchElement = document.getElementById('search-bar-input');
+let searchValue;
+searchElement.addEventListener('keypress', (event) => {
+
+    if (event.key === 'Enter') {
+        searchValue = searchElement.value;
+        if (searchValue == '') {
+            event.preventDefault();
+            M.toast({
+                html: 'Insert a search value!',
+            })
+        } else {
+            location.pathname = `/s/${searchValue}`;
+        }
+    }
+
+});
+
 $("#search").click(function (event) {
-    let searchValue = document.getElementById('search-bar-input').value;
+    searchValue = searchElement.value;
     if (searchValue == '') {
         event.preventDefault();
         M.toast({
             html: 'Insert a search value!',
         })
     } else {
-        $("#search").attr("href", `/s/${searchValue}`);
+        location.pathname = `/s/${searchValue}`;
     }
 });
 
