@@ -97,6 +97,28 @@ function updatePriceRange() {
 }
 
 setprice.addEventListener('click', changePriceRange)
+minInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        if (parseInt(minInput.value, 10) > parseInt(maxInput.value, 10)) {
+            M.toast({
+                html: 'Minimum price can\'t be higher than maximum'
+            })
+        } else {
+            slider.noUiSlider.set([minInput.value, null]);
+        }
+    }
+})
+maxInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        if (parseInt(minInput.value, 10) > parseInt(maxInput.value, 10)) {
+            M.toast({
+                html: 'Minimum price can\'t be higher than maximum'
+            })
+        } else {
+            slider.noUiSlider.set([null, maxInput.value]);
+        }
+    }
+})
 
 function changePriceRange() {
     if (parseInt(minInput.value, 10) > parseInt(maxInput.value, 10)) {

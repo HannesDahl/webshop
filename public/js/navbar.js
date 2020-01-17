@@ -37,6 +37,6 @@ $("#search").click(function (event) {
     }
 });
 
-if (document.getElementById('productsWrapper')) {
+if (document.getElementById('productWrapper')) {
     document.getElementById('search-result-text').innerText = `Search results for: ${window.location.href.replace(/^.*[\\\/]/, '', /["']/g, "").replace("%20", " ")}`
 }

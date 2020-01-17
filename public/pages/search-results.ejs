@@ -10,8 +10,13 @@
     <%- include('../partials/navbar'); -%>
 
     <div class="container products">
+        <% if (products.length > 1) { %>
+        <div class="row">
+            <%- include('../components/filter-bar.ejs'); -%>
+        </div>
+        <% } %>
         <h3 id="search-result-text"></h3>
-        <div id="productsWrapper" class="row">
+        <div id="productWrapper" class="row">
             <%- include('../components/product-cards.ejs'); -%>
         </div>
     </div>
@@ -20,6 +25,9 @@
 
     <%- include('../partials/scripts'); -%>
 
+    <% if (products.length > 1) { %>
+    <script src="../js/filterbar.js"></script>
+    <% } %>
 </body>
 
 </html>
