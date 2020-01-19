@@ -56,7 +56,6 @@ function changeOrder() {
     }
     if (currentOrder == 'alphabeticalAsc') {
         names.sort()
-        console.log(names);
 
         for (let i = 0; i < names.length; i++) {
             newOrder.push(namesClone.indexOf(names[i]))
@@ -67,8 +66,8 @@ function changeOrder() {
         newOrder = [];
     }
     if (currentOrder == 'alphabeticalDesc') {
-        names.sort()
-        console.log(names);
+        names.sort();
+        names.reverse();
 
         for (let i = 0; i < names.length; i++) {
             newOrder.push(namesClone.indexOf(names[i]))

@@ -167,6 +167,17 @@ footer {
         border-radius: 2px;
     }
 
+    .dropdown-content {
+        li span {
+            color: black;
+
+            &:hover {
+                background-color: #424242;
+                color: white;
+            }
+        }
+    }
+
     .card {
 
         .card-image {

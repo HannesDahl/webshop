@@ -16,17 +16,24 @@
         </div>
         <% } %>
 
+        <% if (products.length > 0) { %>
         <div class="row" id="productWrapper">
             <%- include('../components/product-cards.ejs'); -%>
         </div>
+        <% } else { %>
+        <div class="row">
+            <h3 class="mt5 mb5 pt5 pb5">Sorry there are no products in this category :(</h3>
+        </div>
+        <%}%>
+   
     </div>
 
     <%- include('../partials/footer'); -%>
 
-    <%- include('../partials/scripts'); -%>
-    <% if (products.length > 1) { %>
-    <script src="../js/filterbar.js"></script>
-    <% } %>
+        <%- include('../partials/scripts'); -%>
+        <% if (products.length > 1) { %>
+        <script src="../js/filterbar.js"></script>
+        <% } %>
 </body>
 
 </html>

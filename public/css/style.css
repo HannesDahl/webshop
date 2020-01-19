@@ -178,6 +178,15 @@ footer .page-footer {
   border-radius: 2px;
 }
 
+.container.products .dropdown-content li span {
+  color: black;
+}
+
+.container.products .dropdown-content li span:hover {
+  background-color: #424242;
+  color: white;
+}
+
 .container.products .card .card-image {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -1,17 +1,8 @@
-<div class="input-field col s3">
+<div class="input-field col l3 s6">
     <input id="category-search" type="text" autocomplete="off">
     <label for="category-search">Search</label>
 </div>
-
-<div class="col s5 mt5">
-
-    <div id="price-slider"></div>
-    <div class="price-range-filter"><input type="number" class="priceInput" id="minInput">€ - <input type="number"
-            class="priceInput" id="maxInput">€ <a href="#" id="setprice">Set price range</a>
-    </div>
-</div>
-
-<div class="input-field col s3 offset-s1">
+<div class="input-field col l3 s6">
     <select id="order" name="order">
         <option value="alphabeticalAsc" selected>A-Z</option>
         <option value="alphabeticalDesc">Z-A</option>
@@ -19,6 +10,14 @@
         <option class="orderOption" value="priceDesc">price: high-low</option>
     </select>
 </div>
+<div class="col l5 s12 mt5">
+    <div id="price-slider"></div>
+    <div class="price-range-filter"><input type="number" class="priceInput" id="minInput">€ - <input type="number"
+            class="priceInput" id="maxInput">€ <a href="#" id="setprice">Set price range</a>
+    </div>
+</div>
+
+
 <% products = products.sort(function (a, b) {
     var x = a.name.toLowerCase();
   var y = b.name.toLowerCase();
