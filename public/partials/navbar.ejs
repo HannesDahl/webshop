@@ -8,11 +8,15 @@
                     <input placeholder="Search" id="search-bar-input" class="search-bar" type="search">
                     <a href="#" class="black-text search-icon" id="search"><i class="material-icons">search</i></a>
                 </div>
-
-                <a class="btn white black-text" href="/login">Log in</a>
-                <a class="btn white black-text" href="/signup">Sign up</a>
+                <div id="signedout" style="display: none;">
+                    <a class="btn white black-text" href="/login">Log in</a>
+                    <a class="btn white black-text" href="/signup">Sign up</a>
+                </div>
+                <div id="signedIn" style="display: none;"><i class="fas fa-user"></i>
+                    <p id="userName"></p>
+                </div>
             </ul>
-            <a class="cart" href="#">
+            <a class=" cart" href="#">
                 <i class="material-icons">shopping_cart</i>
             </a>
         </div>

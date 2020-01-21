@@ -40,3 +40,18 @@ $("#search").click(function (event) {
 if (document.getElementById('productWrapper') && document.getElementById('search-result-text')) {
     document.getElementById('search-result-text').innerText = `Search results for: ${window.location.href.replace(/^.*[\\\/]/, '', /["']/g, "").replace("%20", " ")}`
 }
+
+let signedout = document.getElementById('signedout');
+let signedIn = document.getElementById('signedIn');
+let userNameDisplay = document.getElementById('userName');
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        signedout.style.display = 'none';
+        signedIn.style.display = '';
+        let userFirstName = user.displayName.replace(/ .*/, '')
+        userNameDisplay.innerText = userFirstName
+    } else {
+        signedout.style.display = '';
+        signedIn.style.display = 'none';
+    }
+})

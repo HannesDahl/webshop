@@ -12,4 +12,9 @@ let firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-console.log(firebase.auth().currentUser);
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        console.log(user.uid)
+        console.log(user)
+    }
+})
