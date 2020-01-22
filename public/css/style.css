@@ -30,7 +30,7 @@ footer .page-footer {
   margin: 0 2px;
 }
 
-.navbar-fixed #nav-mobile #signedIn .dropdown-content {
+.navbar-fixed #nav-mobile #signedIn .dropdown-content a {
   color: black;
 }
 
