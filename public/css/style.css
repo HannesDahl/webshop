@@ -86,12 +86,25 @@ footer .page-footer {
   color: #e1e1e1;
 }
 
-.navbar-fixed .nav-content .active {
-  background: #333;
+.navbar-fixed .nav-content .active.tab a {
+  border-bottom-width: 3px;
+  color: #fff;
+}
+
+.navbar-fixed .nav-content .tab {
+  background: none;
+}
+
+.navbar-fixed .nav-content .tab a {
+  -webkit-transition: border-width .2s;
+  transition: border-width .2s;
+  border-bottom-style: solid;
+  border-bottom-color: #fff;
+  border-bottom-width: 0;
 }
 
 .navbar-fixed .nav-content .tab a:hover {
-  background-color: rgba(51, 51, 51, 0.5);
+  border-bottom-width: 3px;
 }
 
 .sidenav {

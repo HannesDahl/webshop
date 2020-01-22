@@ -79,13 +79,25 @@ footer {
     }
 
     .nav-content {
-        .active {
-            background: #333;
+        .active.tab {
+            a {
+                border-bottom-width: 3px;
+                color: #fff;
+            }
         }
 
         .tab {
-            a:hover {
-                background-color: rgba(51, 51, 51, 0.50);
+            background: none;
+
+            a {
+                transition: border-width .2s;
+                border-bottom-style: solid;
+                border-bottom-color: #fff;
+                border-bottom-width: 0;
+
+                &:hover {
+                    border-bottom-width: 3px;
+                }
             }
         }
     }
