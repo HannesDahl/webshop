@@ -30,4 +30,34 @@
             prevEl: '.swiper-button-prev',
         },
     });
+
+    function googleSignin() {
+        firebase.auth()
+
+            .signInWithPopup(provider).then(function (result) {
+                firebase.auth().currentUser.getIdToken(true).then(function (idToken) {
+                    $.getJSON('http://localhost:3000/verifytoken/' + idToken, function (result) {
+                        console.log(result);
+                    });
+                });
+                var user = result.user;
+                // window.location.href = "/";
+            }).catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+
+                console.log(error.code)
+                console.log(error.message)
+            });
+    }
+
+    function googleSignout() {
+        firebase.auth().signOut()
+
+            .then(function () {
+                console.log('Signout Succesfull')
+            }, function (error) {
+                console.log('Signout Failed')
+            });
+    }
 </script>

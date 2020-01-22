@@ -7,9 +7,13 @@ function googleSignin() {
     firebase.auth()
 
         .signInWithPopup(provider).then(function (result) {
-            var token = result.credential.accessToken;
+            firebase.auth().currentUser.getIdToken(true).then(function (idToken) {
+                $.getJSON('http://localhost:3000/verifytoken/' + idToken, function (result) {
+                    console.log(result);
+                });
+            });
             var user = result.user;
-            window.location.href = "/";
+            // window.location.href = "/";
         }).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;

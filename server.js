@@ -15,6 +15,59 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 app.use(express.static(__dirname + '/public'));
 
+const admin = require("firebase-admin");
+
+var serviceAccount = require("./webshop-b7847-firebase-adminsdk-s0u02-aa35a15c7e.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://webshop-b7847.firebaseio.com"
+});
+
+app.all('*', function (req, res, next) {
+    checkAuth();
+    next();
+})
+
+function checkAuth() {
+    if (token) {
+        admin.auth().verifyIdToken(token)
+            .then(() => {
+                console.log('Authorized');
+                res.json({
+                    authorized: true
+                });
+            }).catch(() => {
+                console.log('Unauthorized #1');
+                res.status(403).send('Unauthorized')
+            });
+    } else {
+        console.log('Unauthorized #2');
+        res.status(403).send('Unauthorized')
+    }
+}
+
+app.get('/verifytoken/:token', function (req, res) {
+    let token = req.params.token;
+    console.log(token);
+
+    if (token) {
+        admin.auth().verifyIdToken(token)
+            .then(() => {
+                console.log('Authorized');
+                res.json({
+                    authorized: true
+                });
+            }).catch(() => {
+                console.log('Unauthorized #1');
+                res.status(403).send('Unauthorized')
+            });
+    } else {
+        console.log('Unauthorized #2');
+        res.status(403).send('Unauthorized')
+    }
+});
+
 app.get('/c/:category', function (req, res) {
     let categoryName = req.params.category;
 
@@ -69,6 +122,8 @@ app.get('/s/:searchinput', function (req, res) {
 });
 
 app.get('/', function (req, res) {
+    console.log(req.header('User-Agent'));
+
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) console.error(err.message);
         console.log('Connected to the products database.');
