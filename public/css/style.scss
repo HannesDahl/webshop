@@ -23,17 +23,17 @@ footer {
         #signedIn {
             margin: 0 15px;
 
-            .dropdown-content a {
+            .dropdown-trigger>* {
+                margin: 0 2px;
+            }
+
+            .dropdown-content {
                 color: black;
             }
 
             i {
                 font-size: 18px;
             }
-        }
-
-        #signedIn>* {
-            margin: 0 5px;
         }
 
         .search-bar-wrapper {
