@@ -54,6 +54,9 @@ function googleSignout() {
 
         .then(function () {
             console.log('Signout Succesfull')
+            M.toast({
+                html: 'You have signed out!'
+            })
         }, function (error) {
             console.log('Signout Failed')
         });
