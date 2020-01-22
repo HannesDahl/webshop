@@ -20,6 +20,22 @@ footer {
             margin: 0;
         }
 
+        #signedIn {
+            margin: 0 15px;
+
+            .dropdown-trigger>* {
+                margin: 0 2px;
+            }
+
+            .dropdown-content a {
+                color: black;
+            }
+
+            i {
+                font-size: 18px;
+            }
+        }
+
         .search-bar-wrapper {
             display: flex;
             align-items: center;

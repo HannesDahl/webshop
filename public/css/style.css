@@ -22,6 +22,22 @@ footer .page-footer {
   margin: 0;
 }
 
+.navbar-fixed #nav-mobile #signedIn {
+  margin: 0 15px;
+}
+
+.navbar-fixed #nav-mobile #signedIn .dropdown-trigger > * {
+  margin: 0 2px;
+}
+
+.navbar-fixed #nav-mobile #signedIn .dropdown-content a {
+  color: black;
+}
+
+.navbar-fixed #nav-mobile #signedIn i {
+  font-size: 18px;
+}
+
 .navbar-fixed #nav-mobile .search-bar-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

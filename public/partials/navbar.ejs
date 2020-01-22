@@ -12,8 +12,16 @@
                     <a class="btn white black-text" href="/login">Log in</a>
                     <a class="btn white black-text" href="/signup">Sign up</a>
                 </div>
-                <div id="signedIn" style="display: none;"><i class="fas fa-user"></i>
-                    <p id="userName"></p>
+                <div id="signedIn" style="display: none;">
+                    <a class="dropdown-trigger" href="#" data-target="user-dropdown">
+                        <i class="fas fa-user"></i>
+                        <span id="userName"></span>
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    </>
+                    <ul id="user-dropdown" class="dropdown-content">
+                        <li id="logOut"><a href="#">Log out</a></li>
+                    </ul>
                 </div>
             </ul>
             <a class=" cart" href="#">

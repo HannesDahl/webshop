@@ -22,13 +22,3 @@ function googleSignin() {
             console.log(error.message)
         });
 }
-
-function googleSignout() {
-    firebase.auth().signOut()
-
-        .then(function () {
-            console.log('Signout Succesfull')
-        }, function (error) {
-            console.log('Signout Failed')
-        });
-}
