@@ -4,15 +4,52 @@ if (document.getElementById('products-table')) {
     loadDashboardChart();
 }
 
-$(window).on("load", function () {
-    $('.loader-wrapper').fadeOut("slow");
+$(document).ready(function () {
+    setTimeout(() => {
+        $('.loader-wrapper').fadeOut("slow");
+    }, 500);
+});
+
+$(document).ready(function () {
+    $('.modal').modal();
 });
 
 function loadProductsTable() {
     $(document).ready(function () {
         $('#products-table').DataTable();
+        $('#products-table').ready(function () {
+            loadHTML();
+        });
     });
 }
+
+function loadHTML() {
+    if (document.getElementsByName('products-table_length')[0]) {
+        const tableSelect = document.getElementsByName('products-table_length')[0];
+        tableSelect.classList.add('browser-default')
+    }
+
+    if (document.getElementsByTagName('input')[0]) {
+        document.getElementsByTagName('input')[0].setAttribute('placeholder', 'Search');
+    }
+}
+
+const editRow = document.getElementsByClassName('edit-row');
+for (let i = 0; i < editRow.length; i++) {
+    editRow[i].addEventListener('click', (e) => {
+        document.getElementById('productName').value = e.target.parentElement.parentElement.children[1].textContent;
+        document.getElementById('productPrice').value = e.target.parentElement.parentElement.children[3].textContent.replace('€', '');
+        document.getElementById('productDescription').value = e.target.parentElement.parentElement.children[2].textContent;
+        document.getElementById('productID').value = e.target.parentElement.parentElement.children[0].textContent;
+
+        M.updateTextFields();
+    });
+}
+
+const modalCloseButton = document.getElementsByClassName('modal-close');
+modalCloseButton[0].addEventListener('click', (e) => {
+    e.preventDefault();
+});
 
 function loadDashboardChart() {
     var ctx = document.getElementById('dashboard-chart').getContext('2d');

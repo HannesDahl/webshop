@@ -25,15 +25,15 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input name="price" id="price" type="number" step="0.01" class="validate" required>
+                    <input name="price" id="price" type="number" class="validate" required>
                     <label for="price">Price</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea name="description" id="description" class="materialize-textarea" required></textarea>
-                    <label for="description">Description</label>
+                    <input name="description" id="description" type="text" class="validate" required></input>
+                    <label for="description">Small description</label>
                 </div>
             </div>
 
@@ -65,7 +65,19 @@
     </div>
 
     <div class="loader-wrapper">
-        <div class="loader"></div>
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <%- include('../partials/scripts'); -%>

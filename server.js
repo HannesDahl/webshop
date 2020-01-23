@@ -110,6 +110,31 @@ app.get('/adminpage/productlist', function (req, res) {
     });
 });
 
+app.post('/save-changes', function (req, res) {
+    let productName = req.fields.productName,
+        productPrice = req.fields.productPrice,
+        productDescription = req.fields.productDescription,
+        productID = req.fields.productID;
+
+    let db = new sqlite3.Database('products.db', sqlite3.OPEN_READWRITE, (err) => {
+        if (err) console.error(err.message);
+        console.log('Connected to the products database.');
+    });
+
+    db.serialize(() => {
+        db.all(`UPDATE products SET name = '${productName}', price = ${productPrice}, description = '${productDescription}' WHERE id = ${productID}`, (err) => {
+            if (err) console.error(err.message);
+
+            res.redirect('/adminpage/productlist');
+        });
+    })
+
+    db.close((err) => {
+        if (err) return console.error(err.message);
+        console.log('Closed the database connection.');
+    });
+});
+
 app.get('/adminpage/addproduct', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) console.error(err.message);
