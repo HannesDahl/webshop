@@ -89,6 +89,25 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get('/products', function (req, res) {
+    let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
+        if (err) console.error(err.message);
+        console.log('Connected to the products database.');
+    });
+
+    db.serialize(() => {
+        db.all(`SELECT name,image FROM products`, (err, products) => {
+            if (err) console.error(err.message);
+
+            res.json(products)
+        });
+    });
+
+    db.close((err) => {
+        if (err) console.error(err.message);
+    });
+});
+
 app.get('/adminpage/productlist', function (req, res) {
     let db = new sqlite3.Database('products.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) console.error(err.message);

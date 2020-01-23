@@ -7,7 +7,7 @@ for (let i = 0; i < tabs.length; i++) {
     }
 }
 
-let searchElement = document.getElementById('search-bar-input');
+let searchElement = document.getElementById('autocomplete-input');
 let searchValue;
 searchElement.addEventListener('keypress', (event) => {
 
@@ -22,8 +22,21 @@ searchElement.addEventListener('keypress', (event) => {
             location.pathname = `/s/${searchValue}`;
         }
     }
-
 });
+
+$(document).ready(function () {
+    $.getJSON("http://localhost:3000/products", function (products) {
+        let data = {};
+
+        for (let i = 0; i < products.length; i++) {
+            data[products[i].name] = 'http://localhost:3000/images/' + products[i].image
+        }
+
+        $('input.autocomplete').autocomplete({
+            data
+        });
+    });
+})
 
 $("#search").click(function (event) {
     searchValue = searchElement.value;
