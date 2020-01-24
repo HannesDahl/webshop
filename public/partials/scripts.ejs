@@ -5,14 +5,22 @@
 <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
 <script src="../js/firebase.js"></script>
+<script>
+    let auth = false;
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            auth = true;
+        } else {
+            auth = false;
+        }
+    });
+</script>
 <script src="../js/navbar.js"></script>
 <script>
     $(document).ready(function () {
         $('.sidenav').sidenav({
             edge: 'right'
         });
-    });
-    $(document).ready(function () {
         $('select').formSelect();
     });
 
@@ -31,24 +39,47 @@
         },
     });
 
-    function googleSignin() {
-        firebase.auth()
+    function fetchData(url) {
+        let headers = {
+            'FBtoken': false
+        }
+        if (auth) {
+            firebase.auth().currentUser.getIdToken(true).then(function (idToken) {
+                headers = {
+                    'FBtoken': idToken
+                }
 
-            .signInWithPopup(provider).then(function (result) {
-                firebase.auth().currentUser.getIdToken(true).then(function (idToken) {
-                    $.getJSON('http://localhost:3000/verifytoken/' + idToken, function (result) {
-                        console.log(result);
-                    });
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    headers: headers,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (result) {
+                        $('#main').html(result);
+                        window.history.pushState({
+                            "html": result
+                        }, "", url)
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
                 });
-                var user = result.user;
-                // window.location.href = "/";
-            }).catch(function (error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-
-                console.log(error.code)
-                console.log(error.message)
             });
+        } else {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                headers: headers,
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
     }
 
     function googleSignout() {

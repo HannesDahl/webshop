@@ -2,7 +2,7 @@
 <% let productName = products[i].name.replace(/ /g, "_")%>
 <div class="col s3 card-container">
     <div class="card">
-        <a href="/p/<%=productName%>">
+        <a href="javascript:fetchData('ajax//p/<%=productName%>')">
             <div class="card-image">
                 <img class="image" src="../images/<%=products[i].image%>">
             </div>

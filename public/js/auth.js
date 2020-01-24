@@ -8,9 +8,11 @@ function googleSignin() {
 
         .signInWithPopup(provider).then(function (result) {
             firebase.auth().currentUser.getIdToken(true).then(function (idToken) {
-                $.getJSON('http://localhost:3000/verifytoken/' + idToken, function (result) {
-                    console.log(result);
-                });
+                auth = true;
+                // $.getJSON('http://localhost:3000/verifytoken/' + idToken, function (result) {
+                //     console.log(result);
+
+                // });
             });
             var user = result.user;
             // window.location.href = "/";

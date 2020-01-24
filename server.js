@@ -25,48 +25,45 @@ admin.initializeApp({
 });
 
 app.all('*', function (req, res, next) {
-    checkAuth();
+    checkAuth(req.headers.fbtoken);
     next();
 })
 
-function checkAuth() {
+function checkAuth(token) {
     if (token) {
         admin.auth().verifyIdToken(token)
             .then(() => {
                 console.log('Authorized');
-                res.json({
-                    authorized: true
-                });
+                return true;
             }).catch(() => {
                 console.log('Unauthorized #1');
-                res.status(403).send('Unauthorized')
+                return false;
             });
     } else {
         console.log('Unauthorized #2');
-        res.status(403).send('Unauthorized')
+        return false;
     }
 }
 
-app.get('/verifytoken/:token', function (req, res) {
-    let token = req.params.token;
-    console.log(token);
+// app.get('/verifytoken/:token', function (req, res) {
+//     let token = req.params.token;
+//     console.log(token);
 
-    if (token) {
-        admin.auth().verifyIdToken(token)
-            .then(() => {
-                console.log('Authorized');
-                res.json({
-                    authorized: true
-                });
-            }).catch(() => {
-                console.log('Unauthorized #1');
-                res.status(403).send('Unauthorized')
-            });
-    } else {
-        console.log('Unauthorized #2');
-        res.status(403).send('Unauthorized')
-    }
-});
+//     if (token) {
+//         admin.auth().verifyIdToken(token)
+//             .then(() => {
+//                 console.log('Authorized');
+//                 res.json({
+//                     authorized: true
+//                 });
+//             }).catch(() => {
+//                 console.log('Unauthorized #1');
+//             });
+//     } else {
+//         console.log('Unauthorized #2');
+//         res.status(403).send('Unauthorized')
+//     }
+// });
 
 app.get('/c/:category', function (req, res) {
     let categoryName = req.params.category;
@@ -217,7 +214,7 @@ app.post('/addproduct', function (req, res) {
     });
 });
 
-app.get('/p/:product', function (req, res) {
+app.get('/ajax/p/:product', function (req, res, next) {
     let productUrl = req.params.product;
     let productName = productUrl.replace(/_/g, " ")
 
@@ -227,12 +224,13 @@ app.get('/p/:product', function (req, res) {
     });
 
     db.serialize(() => {
+
         db.get(`SELECT * FROM products WHERE name = ?`, [productName], (err, product) => {
             if (err) console.error(err.message);
 
             res.render('pages/product-page', {
                 product: product
-            })
+            });
         });
     });
 
